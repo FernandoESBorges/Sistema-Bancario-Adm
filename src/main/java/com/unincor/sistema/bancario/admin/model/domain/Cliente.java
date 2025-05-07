@@ -10,52 +10,32 @@ import java.time.LocalDate;
  *
  * @author Ferna
  */
-public class Cliente {
-    private long id;
-    private String nome;
-    private String cpf;
-    private LocalDate dataNascimento;
-            
+public class Cliente extends Pessoa {
 
-    public Cliente(long id, String nome, String cpf, LocalDate dataNascimento) {
-        this.id = id;
+    private long idCliente;
+
+    public Cliente() {
+    }
+    
+    
+
+    public Cliente(long idCliente, String nome, String cpf, LocalDate dataNascimento, String email, String telefone, String senhaHash) {
+        this.idCliente = idCliente;
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
+        this.email = email;
+        this.telefone = telefone;
+        this.senhaHash = senhaHash;
     }
+    
 
-    public long getId() {
-        return id;
+    public long getIdCliente() {
+        return idCliente;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.idCliente = idCliente;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-    
-    
-    
 }
