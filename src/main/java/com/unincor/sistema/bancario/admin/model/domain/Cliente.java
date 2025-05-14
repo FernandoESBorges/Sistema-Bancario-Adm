@@ -12,14 +12,14 @@ import java.time.LocalDate;
  */
 public class Cliente extends Pessoa {
 
-    private long idCliente;
+    private Long idCliente;
 
     public Cliente() {
     }
     
     
 
-    public Cliente(long idCliente, String nome, String cpf, LocalDate dataNascimento, String email, String telefone, String senhaHash) {
+    public Cliente(Long idCliente, String nome, String cpf, LocalDate dataNascimento, String email, String telefone, String senhaHash) {
         this.idCliente = idCliente;
         this.nome = nome;
         this.cpf = cpf;
@@ -30,11 +30,11 @@ public class Cliente extends Pessoa {
     }
     
 
-    public long getIdCliente() {
+    public Long getIdCliente() {
         return idCliente;
     }
 
-    public void setId(long id) {
+    public void setIdCliente(Long idCliente) {
         this.idCliente = idCliente;
     }
 

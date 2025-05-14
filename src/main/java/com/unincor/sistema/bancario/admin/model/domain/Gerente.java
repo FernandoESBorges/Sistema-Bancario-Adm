@@ -12,13 +12,13 @@ import java.time.LocalDate;
  */
 public class Gerente extends Pessoa {
 
-    private long idGerente;
+    private Long idGerente;
     private Agencia agencia;
 
     public Gerente() {
     }
 
-    public Gerente(long idGerente, String nome, String cpf, LocalDate dataNascimento, String email, String telefone, String senhaHash, Agencia idAgencia) {
+    public Gerente(Long idGerente, String nome, String cpf, LocalDate dataNascimento, String email, String telefone, String senhaHash, Agencia idAgencia) {
         this.idGerente = idGerente;
         this.nome = nome;
         this.cpf = cpf;
@@ -29,11 +29,11 @@ public class Gerente extends Pessoa {
         this.agencia = agencia;
     }
 
-    public long getIdGerente() {
+    public Long getIdGerente() {
         return idGerente;
     }
 
-    public void setIdGerente(long idGerente) {
+    public void setIdGerente(Long idGerente) {
         this.idGerente = idGerente;
     }
 

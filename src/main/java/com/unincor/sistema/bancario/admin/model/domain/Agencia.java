@@ -9,7 +9,7 @@ package com.unincor.sistema.bancario.admin.model.domain;
  * @author Ferna
  */
 public class Agencia {
-    private long idAgencia;
+    private Long idAgencia;
     private String codigoAgencia;
     private String cidade;
     private String uf;
@@ -19,7 +19,7 @@ public class Agencia {
     public Agencia() {
     }
 
-    public Agencia(long idAgencia, String codigoAgencia, String cidade, String uf, String logradouro, String cep) {
+    public Agencia(Long idAgencia, String codigoAgencia, String cidade, String uf, String logradouro, String cep) {
         this.idAgencia = idAgencia;
         this.codigoAgencia = codigoAgencia;
         this.cidade = cidade;
@@ -28,11 +28,11 @@ public class Agencia {
         this.cep = cep;
     }
 
-    public long getIdAgencia() {
+    public Long getIdAgencia() {
         return idAgencia;
     }
 
-    public void setIdAgencia(long idAgencia) {
+    public void setIdAgencia(Long idAgencia) {
         this.idAgencia = idAgencia;
     }
 
