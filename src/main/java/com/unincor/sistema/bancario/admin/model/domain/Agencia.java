@@ -6,7 +6,7 @@ package com.unincor.sistema.bancario.admin.model.domain;
 
 /**
  *
- * @author Ferna
+ * @author lucas
  */
 public class Agencia {
     private Long idAgencia;
@@ -14,17 +14,19 @@ public class Agencia {
     private String cidade;
     private String uf;
     private String logradouro;
+    private String numero;
     private String cep;
 
     public Agencia() {
     }
 
-    public Agencia(Long idAgencia, String codigoAgencia, String cidade, String uf, String logradouro, String cep) {
+    public Agencia(Long idAgencia, String codigoAgencia, String cidade, String uf, String logradouro, String numero, String cep) {
         this.idAgencia = idAgencia;
         this.codigoAgencia = codigoAgencia;
         this.cidade = cidade;
         this.uf = uf;
         this.logradouro = logradouro;
+        this.numero = numero;
         this.cep = cep;
     }
 
@@ -68,6 +70,14 @@ public class Agencia {
         this.logradouro = logradouro;
     }
 
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
     public String getCep() {
         return cep;
     }
@@ -75,7 +85,6 @@ public class Agencia {
     public void setCep(String cep) {
         this.cep = cep;
     }
-    
     
     
     
