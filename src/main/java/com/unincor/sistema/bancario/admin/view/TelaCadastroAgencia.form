@@ -32,12 +32,12 @@
                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTNumero" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jTUf" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
                   <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jTCep" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                   <Component id="jTLogradouro" alignment="0" pref="175" max="32767" attributes="0"/>
                   <Component id="jTCidade" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jTNumero" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="122" max="32767" attributes="0"/>
               <Component id="jBSalvar" min="-2" pref="91" max="-2" attributes="0"/>

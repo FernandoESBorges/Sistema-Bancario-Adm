@@ -24,6 +24,16 @@ public class TelaCadastroAgencia extends javax.swing.JDialog {
     public TelaCadastroAgencia(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+
+        setLocationRelativeTo(parent);
+
+    }
+
+    public TelaCadastroAgencia(java.awt.Dialog parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        setLocationRelativeTo(parent);
+
     }
 
     /**
@@ -83,12 +93,12 @@ public class TelaCadastroAgencia extends javax.swing.JDialog {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jTNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTUf, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jTCep, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTLogradouro, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jTCidade))
+                    .addComponent(jTCidade)
+                    .addComponent(jTNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                 .addComponent(jBSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -135,11 +145,12 @@ public class TelaCadastroAgencia extends javax.swing.JDialog {
         try {
             Agencia agencia = construirAgenciaView();
             agenciaService.salvaAgencia(agencia);
-        }catch(CadastroExceptions ex){
-            JOptionPane.showMessageDialog(this , ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Salvo com sucesso!");
+        } catch (CadastroExceptions ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jBSalvarActionPerformed
-    
+
     private Agencia construirAgenciaView() {
         Agencia agencia = new Agencia();
         agencia.setCodigoAgencia(jTCodigoAgencia.getText());
@@ -148,7 +159,7 @@ public class TelaCadastroAgencia extends javax.swing.JDialog {
         agencia.setLogradouro(jTLogradouro.getText());
         agencia.setNumero(jTNumero.getText());
         agencia.setCep(jTCep.getText());
-        
+
         return agencia;
     }
 
