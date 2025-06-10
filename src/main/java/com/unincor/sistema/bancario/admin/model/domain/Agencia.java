@@ -6,9 +6,10 @@ package com.unincor.sistema.bancario.admin.model.domain;
 
 /**
  *
- * @author lucas
+ * @author dioge
  */
 public class Agencia {
+    
     private Long idAgencia;
     private String codigoAgencia;
     private String cidade;
@@ -85,11 +86,6 @@ public class Agencia {
     public void setCep(String cep) {
         this.cep = cep;
     }
-
-    public Object getCodigoAgencia(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
     
     
 }

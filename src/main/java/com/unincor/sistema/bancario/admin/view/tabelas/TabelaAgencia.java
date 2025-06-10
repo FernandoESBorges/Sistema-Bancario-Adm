@@ -11,12 +11,13 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author Ferna
+ * @author ferna
  */
 public class TabelaAgencia extends AbstractTableModel {
 
     private List<Agencia> agencias = new ArrayList<>();
-    private String[] colunas = new String[]{"Código Agência", "UF", "Cidade", "CEP"};
+    private String[] colunas = new String[]{"Código Agência", "UF", "Cidade",
+        "CEP"};
 
     @Override
     public int getRowCount() {
@@ -35,11 +36,9 @@ public class TabelaAgencia extends AbstractTableModel {
             case 0 -> ag.getCodigoAgencia();
             case 1 -> ag.getUf();
             case 2 -> ag.getCidade();
-            case 3 -> ag.getCidade();
+            case 3 -> ag.getCep();
             default -> null;
-
         };
-
     }
 
     @Override
@@ -52,9 +51,9 @@ public class TabelaAgencia extends AbstractTableModel {
         return colunas[column];
     }
     
-    public void setAgencias(List<Agencia> agencias){
+    public void setAgencias(List<Agencia> agencias) {
         this.agencias = agencias;
         fireTableDataChanged();
     }
-    
+
 }

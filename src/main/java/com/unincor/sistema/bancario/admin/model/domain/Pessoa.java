@@ -8,10 +8,10 @@ import java.time.LocalDate;
 
 /**
  *
- * @author Ferna
+ * @author dioge
  */
 public abstract class Pessoa {
-
+    
     protected String nome;
     protected String cpf;
     protected LocalDate dataNascimento;
@@ -69,5 +69,7 @@ public abstract class Pessoa {
     public void setSenhaHash(String senhaHash) {
         this.senhaHash = senhaHash;
     }
-
+    
+    
+    
 }

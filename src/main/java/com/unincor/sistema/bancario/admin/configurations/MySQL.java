@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Ferna
+ * @author ferna
  */
 public class MySQL {
     
@@ -22,18 +22,19 @@ public class MySQL {
     
     private static final String PASS = "admin";
     
-    public static Connection connect(){
+    public static Connection connect() {
         try {
             Connection con = DriverManager.getConnection(URL, USER, PASS);
             return con;
         } catch (SQLException ex) {
             Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return null; 
     }
     
     public static void main(String[] args) {
         System.out.println(connect());
     }
+    
+    
 }
-

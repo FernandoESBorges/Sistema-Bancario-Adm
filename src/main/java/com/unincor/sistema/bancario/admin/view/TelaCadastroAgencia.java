@@ -4,36 +4,38 @@
  */
 package com.unincor.sistema.bancario.admin.view;
 
-import com.unincor.sistema.bancario.admin.exceptions.CadastroExceptions;
+import com.unincor.sistema.bancario.admin.exceptions.CadastroException;
 import com.unincor.sistema.bancario.admin.model.domain.Agencia;
 import com.unincor.sistema.bancario.admin.model.services.AgenciaService;
-import java.awt.AWTEvent;
 import javax.swing.JOptionPane;
+
+
+
+
 
 /**
  *
- * @author Ferna
+ * @author ferna
  */
 public class TelaCadastroAgencia extends javax.swing.JDialog {
 
     private final AgenciaService agenciaService = new AgenciaService();
-
+    private ChamadaRetorno chamadaRetorno;
     /**
      * Creates new form TelaCadastroAgencia
      */
     public TelaCadastroAgencia(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
         setLocationRelativeTo(parent);
-
     }
-
-    public TelaCadastroAgencia(java.awt.Dialog parent, boolean modal) {
+    
+    public TelaCadastroAgencia(java.awt.Dialog parent, boolean modal,
+            ChamadaRetorno chamadaRetorno) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
-
+        this.chamadaRetorno = chamadaRetorno;
     }
 
     /**
@@ -57,7 +59,7 @@ public class TelaCadastroAgencia extends javax.swing.JDialog {
         jTNumero = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTCep = new javax.swing.JTextField();
-        jBSalvar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -73,10 +75,10 @@ public class TelaCadastroAgencia extends javax.swing.JDialog {
 
         jLabel6.setText("Cep:");
 
-        jBSalvar.setText("Salvar");
-        jBSalvar.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Salvar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBSalvarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -86,21 +88,24 @@ public class TelaCadastroAgencia extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(jTCodigoAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1)
+                        .addComponent(jTCodigoAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(jTCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addComponent(jTUf, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)
+                        .addComponent(jTLogradouro))
                     .addComponent(jLabel5)
-                    .addComponent(jTUf, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jTCep, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTLogradouro, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jTCidade)
-                    .addComponent(jTNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
-                .addComponent(jBSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(194, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -130,26 +135,26 @@ public class TelaCadastroAgencia extends javax.swing.JDialog {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
-        // TODO add your handling code here:
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             Agencia agencia = construirAgenciaView();
-            agenciaService.salvaAgencia(agencia);
+            agenciaService.salvarAgencia(agencia);
             JOptionPane.showMessageDialog(this, "Salvo com sucesso!");
-        } catch (CadastroExceptions ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            chamadaRetorno.execute();
+            dispose();
+        } catch (CadastroException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(),
+                    "Erro", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jBSalvarActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private Agencia construirAgenciaView() {
         Agencia agencia = new Agencia();
@@ -159,10 +164,10 @@ public class TelaCadastroAgencia extends javax.swing.JDialog {
         agencia.setLogradouro(jTLogradouro.getText());
         agencia.setNumero(jTNumero.getText());
         agencia.setCep(jTCep.getText());
-
+        
         return agencia;
     }
-
+    
     /**
      * @param args the command line arguments
      */
@@ -206,7 +211,7 @@ public class TelaCadastroAgencia extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBSalvar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

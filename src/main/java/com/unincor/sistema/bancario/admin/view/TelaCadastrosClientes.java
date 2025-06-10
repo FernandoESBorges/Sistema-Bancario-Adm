@@ -4,11 +4,9 @@
  */
 package com.unincor.sistema.bancario.admin.view;
 
-import java.awt.Color;
-
 /**
  *
- * @author Ferna
+ * @author ferna
  */
 public class TelaCadastrosClientes extends javax.swing.JDialog {
 

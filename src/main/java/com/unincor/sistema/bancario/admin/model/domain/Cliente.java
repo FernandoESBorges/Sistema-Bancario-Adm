@@ -8,18 +8,17 @@ import java.time.LocalDate;
 
 /**
  *
- * @author Ferna
+ * @author dioge
  */
 public class Cliente extends Pessoa {
-
+    
     private Long idCliente;
 
     public Cliente() {
     }
-    
-    
 
-    public Cliente(Long idCliente, String nome, String cpf, LocalDate dataNascimento, String email, String telefone, String senhaHash) {
+    public Cliente(Long idCliente, String nome, String cpf, LocalDate dataNascimento,
+            String email, String telefone, String senhaHash) {
         this.idCliente = idCliente;
         this.nome = nome;
         this.cpf = cpf;
@@ -28,7 +27,6 @@ public class Cliente extends Pessoa {
         this.telefone = telefone;
         this.senhaHash = senhaHash;
     }
-    
 
     public Long getIdCliente() {
         return idCliente;
@@ -37,5 +35,5 @@ public class Cliente extends Pessoa {
     public void setIdCliente(Long idCliente) {
         this.idCliente = idCliente;
     }
-
+        
 }

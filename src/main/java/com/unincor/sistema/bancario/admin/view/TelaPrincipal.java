@@ -6,7 +6,7 @@ package com.unincor.sistema.bancario.admin.view;
 
 /**
  *
- * @author Ferna
+ * @author ferna
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -38,8 +38,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu2.setBorder(null);
         jMenu2.setText("Cadastros");
 
         jMenuItem1.setText("Clientes");
@@ -66,11 +64,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 393, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 265, Short.MAX_VALUE)
+            .addGap(0, 277, Short.MAX_VALUE)
         );
 
         pack();
@@ -84,7 +82,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         TelaListagemAgencias tela = new TelaListagemAgencias(this, true);
         tela.setVisible(true);
-        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**

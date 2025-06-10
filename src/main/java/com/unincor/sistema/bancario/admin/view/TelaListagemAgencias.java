@@ -9,12 +9,11 @@ import com.unincor.sistema.bancario.admin.view.tabelas.TabelaAgencia;
 
 /**
  *
- * @author Ferna
+ * @author ferna
  */
 public class TelaListagemAgencias extends javax.swing.JDialog {
-    
-    private final AgenciaService agenciaService = new AgenciaService();
 
+    private final AgenciaService agenciaService = new AgenciaService();
     /**
      * Creates new form TelaListagemAgencias
      */
@@ -22,7 +21,6 @@ public class TelaListagemAgencias extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
-        
     }
 
     /**
@@ -44,7 +42,6 @@ public class TelaListagemAgencias extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisar"));
-        jPanel1.setToolTipText("");
 
         jLabel1.setText("Busca");
 
@@ -69,10 +66,8 @@ public class TelaListagemAgencias extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addContainerGap())
@@ -80,11 +75,15 @@ public class TelaListagemAgencias extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)))
+                    .addComponent(jButton2))
+                .addContainerGap())
         );
 
         jTable1.setModel(new TabelaAgencia());
@@ -107,7 +106,7 @@ public class TelaListagemAgencias extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -115,19 +114,20 @@ public class TelaListagemAgencias extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        var agencias = agenciaService.buscarAgencias();
-        TabelaAgencia tab = (TabelaAgencia) jTable1.getModel();
-        tab.setAgencias(agencias);
-        
+        pesquisar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        var tela= new TelaCadastroAgencia(this, true);
+        ChamadaRetorno chamadaRetorno = () -> pesquisar();
+        var tela = new TelaCadastroAgencia(this, true, chamadaRetorno);
         tela.setVisible(true);
-        
-        
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    public void pesquisar() {
+        var agencias = agenciaService.buscarAgencias();
+        TabelaAgencia tab = (TabelaAgencia) jTable1.getModel();
+        tab.setAgencias(agencias);
+    }
     /**
      * @param args the command line arguments
      */
