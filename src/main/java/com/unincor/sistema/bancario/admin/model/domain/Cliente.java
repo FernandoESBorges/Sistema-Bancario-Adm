@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 /**
  *
- * @author dioge
+ * @author ferna
  */
 public class Cliente extends Pessoa {
     
